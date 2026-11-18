@@ -1,4 +1,4 @@
-const LOGO='images/logo.png';
+const LOGO='logo.png';
 const $=s=>document.querySelector(s),R=$('#app');
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const Z=['Arnala','Virar','Agashi','Nalasopara','Vasai','Vasai Road','Naigaon','Evershine / Waliv'];
