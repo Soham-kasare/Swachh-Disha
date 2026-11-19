@@ -59,7 +59,14 @@ const RL=[['citizen','🏠','Citizen','Report garbage and track cleaning'],['col
 function loginView(){const r=sel;return `<div class="w"><div class="hd"><img src="${LOGO}" alt="Swachh Disha"><h1>Swachh Disha</h1><div class="mr">स्वच्छ वसई-विरार, सुंदर वसई-विरार!</div></div><h3>Choose your interface</h3><div class="roles">${RL.map(x=>`<button class="role ${r==x[0]?'on':''}" onclick="sel='${x[0]}';render()"><span>${x[1]}</span><b>${x[2]}</b><div class="mu">${x[3]}</div></button>`).join('')}</div>
 ${r?`<div class="card"><h3>${RL.find(x=>x[0]==r)[2]}: sign in or register</h3>
 <label>Mobile number</label><input id="fm" inputmode="numeric" maxlength="10" placeholder="10-digit number">
-<label>Full name (needed to register)</label><input id="fn">
+<label>Full name (needed to register)</label>
+<input
+    id="fn"
+    type="text"
+    placeholder="Enter your full name"
+    maxlength="40"
+    oninput="this.value=this.value.replace(/[^a-zA-Z ]/g,'').replace(/\s{2,}/g,' ')"
+>
 ${r!='admin'?`<label>Area</label><select id="fa">${opts(Z)}</select>`:''}
 ${r=='collector'?`<label>Vehicle / equipment</label><select id="fv">${opts(FLEET.map(f=>f[0]))}</select><label>Collector type</label><select id="fk"><option value="solo">Individual collector</option><option value="group">Collection group member</option></select>`:''}
 ${r=='admin'||r=='host'?`<label>Passcode</label><input id="fp" type="password"><p class="mu">Demo passcode: ${r=='admin'?'admin123':'host123'}</p>`:''}
